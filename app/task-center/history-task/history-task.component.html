@@ -1,0 +1,64 @@
+<div class="subtitle">
+  <span> {{ title_txt }}  </span> 
+</div>
+<form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="8" >
+      <nz-form-item nzFlex>
+        <nz-form-label [nzFor]="'customer_name'">{{ filter_customer_txt }}  </nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="" [formControlName] = "'customer_name'" [attr.id]="'customer_name'" >
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8" >
+      <nz-form-item nzFlex>
+        <nz-form-label [nzFor]="'order_cd'">{{ filter_ordercd_txt }} </nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="" [formControlName]="'order_cd'" [attr.id]="'order_cd'">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8" >
+      <nz-form-item nzFlex>
+        <nz-form-label [nzFor]="'order_status'">{{ filter_status_txt }} </nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="" [formControlName]="'order_status'" [attr.id]="'order_status'">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col [nzSpan]="24" style="text-align: right;">
+      <button nz-button [nzType]="'primary'">{{ filter_search_txt }}</button>
+      <button nz-button (click)="resetForm()">{{ filter_clear_txt }}</button>
+    </div>
+  </div>
+</form>
+
+<div class="search-result-list">
+        <!-- <button nz-button (click)="new()" class="editable-add-btn">Add</button> -->
+  <nz-table #ajaxTable nzShowSizeChanger *ngIf="orders.length>0"  
+    [nzFrontPagination]="false" [nzData]="orders" [nzLoading]="loading" [nzSize]="'small'" 
+    [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+    (nzPageIndexChange)="getOrders(0)" (nzPageSizeChange)="getOrders(1)" >
+    <thead>
+      <tr>
+        <th>{{ filter_No_txt }}</th>
+        <th>{{ filter_ordercd_txt }}</th>
+        <th>{{ filter_customer_txt }}</th>
+        <th>{{ filter_status_txt }}</th>
+        <th>{{ filter_actions_txt }}</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let order of orders; index as i" >
+      <td>{{ i+1 }}</td>
+      <td>{{ order.order_cd }}</td>
+      <td>{{ order.username }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <a>{{ btn_detail_txt }}</a></td>
+    </tr>       
+  </nz-table>
+</div>

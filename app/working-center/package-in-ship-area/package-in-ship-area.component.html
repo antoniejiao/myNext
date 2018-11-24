@@ -1,0 +1,32 @@
+<div style="width: 50%;">
+  <div style="margin-bottom: 16px;">
+    <!--<nz-input-group nzAddOnBefore="{{ im_input_location_code_txt }}" nzPrefixIcon = "anticon anticon-barcode" nzCompact>-->
+      <input type="text" nz-input placeholder="{{ im_input_location_code_txt }}" [(ngModel)]="newLocation" [readonly]="overflg" (keyup.enter)="finishLocation()" (click)="resetLocation()"  #locationInput>
+      <!--</nz-input-group>-->
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ filter_package_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" [readonly]= "overflg" #barcodeInput>
+    </nz-input-group>
+  </div>
+</div>
+<button nz-button nzType="primary" *ngIf="overflg" (click)="completeIn()">{{ btn_confirm_txt }}</button>
+  <nz-table #ajaxTable [nzShowPagination]="false" 
+    [nzFrontPagination]="false" [nzData]="packages"  [nzSize]="'small'" 
+    [nzTotal]="total" >
+    <thead>
+      <tr>
+        <th>{{ filter_No_txt }}</th>
+        <th>{{ filter_package_txt }}</th>
+        <th>{{ filter_location_txt }}</th>
+        
+      </tr>
+    </thead>
+    <tr *ngFor="let package of packages; index as i">
+      <td>{{ package.pno }}</td>
+      <td>{{ package.name }}</td>
+      <td>{{ package.bin }}</td>
+      
+    </tr>
+  </nz-table>

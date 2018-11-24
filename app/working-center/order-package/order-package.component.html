@@ -1,0 +1,92 @@
+  <div style="margin-left: 10px; margin-bottom: 16px; width: 50%">
+    <nz-input-group nzAddOnBefore="{{ im_input_barcode_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" #barcodeInput>
+    </nz-input-group>
+  </div>
+  <div style="margin-left: 10px;margin-bottom: 16px; text-align:left;">
+    Total: {{ total }}
+    <button nz-button nzType="primary" *ngIf="total==0" (click)="toWaitShip()">{{ btn_toShipArea_txt }}</button>
+  </div>
+
+<div style="width: 50%; float: left;">
+<div class="search-result-list">
+        <!-- <button nz-button (click)="new()" class="editable-add-btn">Add</button> -->
+  <nz-table #ajaxTable [nzShowPagination]="false" 
+    [nzFrontPagination]="false" [nzData]="orderItems" [nzSize]="'small'" 
+     >
+    <thead>
+      <tr>
+        <th>{{ filter_No_txt }}</th>
+        <th>{{ filter_itemname_txt }}</th>
+        <!--<th>{{ filter_customer_txt }}在库</th>-->
+        <!--<th>{{ filter_status_txt }}SKU</th> -->
+        <th>{{ filter_num_txt }}</th>
+        <th>{{ filter_approved_txt }}</th>
+        <th>In</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let item of orderItems; index as i;">
+      <td>{{ i + 1 }}</td>
+      <td>[{{ item.sku }}]{{ item.name }}</td>
+      <!--<td>在库</td>-->
+      <td>{{ item.num }}</td>
+      <td>{{ item.approved }}</td>
+      <td>
+        <span *ngFor="let log of item.logs">
+          P{{ log }} 
+        </span>
+      </td>
+    </tr>       
+  </nz-table>
+</div>
+</div>
+<div style="width: 50%; float: right;">
+
+  <nz-table #ajaxTable [nzShowPagination]="false" 
+    [nzFrontPagination]="false" [nzData]="packages"  [nzSize]="'small'" 
+    [nzTotal]="total" >
+    <thead>
+      <tr>
+        <th>{{ filter_package_txt }}</th>
+        <th>{{ filter_pallet_txt }}</th>
+        <!--<th>{{ filter_customer_txt }}在库</th>-->
+        <!--<th>{{ filter_status_txt }}SKU</th> -->
+        <th>{{ filter_height_txt }}</th>
+        <th>{{ filter_weight_txt }}</th>
+        <th>{{ filter_actions_txt }}</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let package of packages; index as i">
+      <td>{{ package.name }}</td>
+      <td (click)="editPackageType(i)">
+       <nz-select *ngIf="currentPackage==package.pno&&!isSetCurPallet&&!isPalletInput" style="width: 100px;" [(ngModel)]="currentPalletType" (ngModelChange)="modifyPalletType(i)" nzAllowClear nzPlaceHolder="pallets">
+         <nz-option *ngFor="let pallet of pallets"  nzValue="{{ pallet.key }}" nzLabel="{{ pallet.name }}"></nz-option>
+      </nz-select>
+      <!--
+      <nz-select *ngIf="currentPackage>package.pno||isSetCurPallet" style="width: 100px;" [(ngModel)]="package.palletType" nzAllowClear nzPlaceHolder="pallets">
+         <nz-option *ngFor="let pallet of pallets"  nzValue="{{ pallet.key }}" nzLabel="{{ pallet.name }}"></nz-option>
+      </nz-select>
+      -->
+
+      <span *ngIf="currentPackage!=package.pno||isSetCurPallet" >{{ package.showType }}[{{ package.length }}x{{ package.width }}]</span>
+      </td>
+      <!--<td>在库</td>-->
+      <td (click)="editPackageHeight(i)">
+        <input type="text" *ngIf="currentPackage==package.pno&&!isSetHeight" (blur)="setCurrentHeight(i)" style="width: 80px" nz-input [(ngModel)] = "currentHeight">
+        <span *ngIf="currentPackage!=package.pno||isSetHeight">{{ package.height }}</span>
+      </td>
+      <td (click)="editPackageWeight(i)">
+        <input type="text" *ngIf="currentPackage==package.pno&&!isSetCurWeight" (blur)="setCurrentWeight(i)" style="width: 80px" nz-input [(ngModel)] = "currentWeight">
+        <span *ngIf="currentPackage!=package.pno||isSetCurWeight">{{ package.weight }}</span>
+      </td>
+      <td>
+        <button nz-button>{{ btn_photo_txt }}</button>
+        <button nz-button (click)="addPackage()">{{ btn_print_txt }}</button>     
+      </td>
+    </tr>       
+  </nz-table>
+</div>
+<nz-modal [(nzVisible)]="isPalletInput" nzTitle="{{ ttl_setSize_txt }}" (nzOnOk)="handleOk()">
+  <input type="text" nz-input [(ngModel)] = "currentLength">
+  <input type="text" nz-input [(ngModel)] = "currentWidth">
+</nz-modal>

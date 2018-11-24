@@ -1,0 +1,50 @@
+<div style="width: 70%; float: left;">
+<div class="search-result-list">
+        <!-- <button nz-button (click)="new()" class="editable-add-btn">Add</button> -->
+  <nz-table #ajaxTable [nzShowPagination]="false" 
+    [nzFrontPagination]="false" [nzData]="orderItems" [nzLoading]="loading" [nzSize]="'small'" 
+     >
+    <thead>
+      <tr>
+        <th>{{ filter_No_txt }}</th>
+        <th>{{ filter_itemname_txt }}</th>
+        <th>{{ filter_status_txt }}</th>
+        <th>{{ filter_sku_txt }}</th>
+        <th>{{ filter_num_txt }}</th>
+        <th>{{ filter_approved_txt }}</th>
+        <th>{{ filter_arithmetic_txt }}</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let item of orderItems; index as i;">
+      <td>{{ i+1 }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.sku }}</td>
+      <td>{{ item.num }}</td>
+      <td>{{ item.approved }}</td>
+      <td>{{ item.minus }}</td>
+    </tr>       
+  </nz-table>
+</div>
+</div>
+<div style="width: 30%; float: right;">
+  <div>
+    total: {{ total }}
+  </div>
+  <div style="margin-bottom: 16px;">
+    <!--<nz-input-group nzAddOnBefore="{{ im_input_location_code_txt }}" nzPrefixIcon = "anticon anticon-barcode" nzCompact>-->
+      <input type="text" nz-input placeholder="{{ im_input_location_code_txt }}" [(ngModel)]="newLocation" (keyup.enter)="finishLocation()" (click)="resetLocation()"  #locationInput>
+      <!--</nz-input-group>-->
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_input_barcode_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" [readonly]= "overflg" #barcodeInput>
+    </nz-input-group>
+  </div>
+
+  <button nz-button *ngIf="!overflg && !isSameBO" (click)="sendToCSStaff()">{{ btn_sendtoCSStaff_txt }}</button>
+  <button nz-button *ngIf="isBackorder&&isSameBO&&!overflg" (click)="createBackorder()">{{ btn_createbackorder_txt }}</button>
+
+  <button nz-button nzType="primary" *ngIf="overflg" (click)="outBound()">{{ btn_outbound_txt }}</button>
+</div>

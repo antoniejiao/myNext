@@ -1,0 +1,22 @@
+<p>
+{{ dataMessageService.message }}
+</p>
+    <table border="1" *ngIf="dataMessageService.loseData.length>0">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>货位</th>
+          <th>SKU</th>
+          <th>品名</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of dataMessageService.loseData ; index as i">
+        <td>{{ i+1 }}</td>
+        <td>{{ item.locationcd }}</td>
+        <td>{{ item.sku }}</td>
+        <td>{{ item.name }}</td>
+      </tr>
+    </table>
+
+<button (click)="save()">确认提交</button>
+<button (click)="closeMsg()">继续盘点</button>

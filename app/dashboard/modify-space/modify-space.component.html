@@ -1,0 +1,80 @@
+<div class="container" *ngIf="type==1">
+  <h3>{{ new_title_txt }}修改仓库信息</h3>
+  <!--<form> -->
+    <div class="form-group">
+      <label>{{ new_name_txt }}</label>
+      <input [(ngModel)]="warehouseInfo.warehouseName" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_type_txt }}</label>
+      <input [(ngModel)]="warehouseInfo.address" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} </label>
+      <input [(ngModel)]="warehouseInfo.tel" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_status_txt }}</label>
+      <input [(ngModel)]="warehouseInfo.contact" type="text" class="form-control" required>
+    </div>
+
+    <p>
+    <a (click)="save()">{{ save_txt }}save</a>
+    <a (click)="cancel()">{{ cancel_txt }}cancel</a>
+    </p>
+    <!--</form>-->
+</div>
+<div class="container" *ngIf="type==2">
+  <h3>{{ new_title_txt }}修改库区信息</h3>
+  <!--<form> -->
+    <div class="form-group">
+      <label>{{ new_name_txt }}</label>
+      <input [(ngModel)]="spaceInfo.spaceName" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_type_txt }}</label>
+      <input [(ngModel)]="spaceInfo.spaceCode" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} </label>
+      <input [(ngModel)]="spaceInfo.temperatureRange" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_status_txt }}</label>
+      <input [(ngModel)]="spaceInfo.spaceStatus" type="text" class="form-control" required>
+    </div>
+
+    <p>
+    <a (click)="save()">{{ save_txt }}save</a>
+    <a (click)="cancel()">{{ cancel_txt }}cancel</a>
+    </p>
+    <!--</form>-->
+</div>
+
+<div class="container" *ngIf="type==3">
+  <h3>{{ new_title_txt }}修改库位信息</h3>
+  <!--<form> -->
+    <div class="form-group">
+      <label>{{ new_name_txt }}</label>
+      <input [(ngModel)]="spaceInfo.spaceCode" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_type_txt }}</label>
+      <input [(ngModel)]="spaceInfo.spaceName" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} </label>
+      <input [(ngModel)]="spaceInfo.Status" type="text" class="form-control" required>
+    </div>
+    <!--
+    <div class="form-group">
+      <label>{{ new_status_txt }}</label>
+      <input [(ngModel)]="warehouseInfo.contact" type="text" class="form-control" required>
+    </div> -->
+
+    <p>
+    <a (click)="save()">{{ save_txt }}save</a>
+    <a (click)="cancel()">{{ cancel_txt }}cancel</a>
+    </p>
+    <!--</form>-->
+</div>

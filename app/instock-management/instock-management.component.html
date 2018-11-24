@@ -1,0 +1,94 @@
+<div>
+<div class="base-zone isleft">
+  <div class="sub-zone">
+    in-bound!
+          <a [routerLink]="[{outlets: {popup:['inbound']} }  ]">入库管理</a>
+    <table border="1" >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>入库单号</th>
+          <th>创建时间</th>
+          <th>操作人</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let order of inOrders; index as i" >
+        <td>{{ i+1 }}</td>
+        <td>{{ order.outin_batch_cd }}</td>
+        <td>{{ order.created_dt }}</td>
+        <td>{{ order.oper_name }}</td>
+      </tr>
+    </table>
+    <div><a routerLink = "/dashboard/moreorders/1" >查看更多</a> </div>
+  </div>
+  
+  <div class="sub-zone">
+    out-bound!
+    <table border="1" >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>出库单号</th>
+          <th>创建时间</th>
+          <th>操作人</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let order of outOrders; index as i" >
+        <td>{{ i+1 }}</td>
+        <td>{{ order.outin_batch_cd }}</td>
+        <td>{{ order.created_dt }}</td>
+        <td>{{ order.oper_name }}</td>
+      </tr>
+    </table>
+    <div><a routerLink = "/dashboard/moreorders/2" >查看更多</a> </div>
+  </div>
+</div>
+
+<div class="base-zone isright">
+  <div class="sub-zone">
+    checking
+    <table border="1" >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>盘点单号</th>
+          <th>状态</th>
+          <th>创建时间</th>
+          <th>操作人</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let order of checkOrders; index as i" >
+        <td>{{ i+1 }}</td>
+        <td>{{ order.check_batch_cd }}</td>
+        <td>{{ checkStatusArrays[order.status].value }}</td>
+        <td>{{ order.created_dt }}</td>
+        <td>{{ order.oper_name }}</td>
+      </tr>
+    </table>
+    <div><a routerLink = "/dashboard/checkorderlist" >查看更多</a> </div>
+  </div>
+  
+  <div class="sub-zone">
+    products
+    <table border="1" >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>sku</th>
+          <th>商品名称</th>
+          <th>在库数</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of items; index as i" >
+        <td>{{ i+1 }}</td>
+        <td>{{ item.sku }}</td>
+        <td>{{ item.item_name }}</td>
+        <td>{{ item.num }}</td>
+      </tr>
+    </table>
+    <div><a routerLink = "/dashboard/instockitemlist" >查看更多</a> </div>
+  </div>
+</div>
+</div>
+
+<router-outlet name="popup"></router-outlet>

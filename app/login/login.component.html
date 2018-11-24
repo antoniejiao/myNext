@@ -1,0 +1,22 @@
+<div class="login-form">
+  <nz-form-item>
+    <h2>{{ welcome_text }}</h2>
+    <nz-form-control>
+      <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="anticon anticon-user">
+        <input type="text" nz-input placeholder="{{ ph_name_txt }}" [(ngModel)]="loginData.account">
+      </nz-input-group>
+      <ng-template #suffixTemplate><i class="anticon anticon-close-circle" (click)="loginData.account=null" *ngIf="loginData.account"></i></ng-template>
+    </nz-form-control>
+    <br>
+    <nz-form-control> 
+      <nz-input-group nzPrefixIcon="anticon anticon-lock">
+        <input type="password" nz-input [(ngModel)]="loginData.password" placeholder="{{ ph_pwd_txt }}">
+      </nz-input-group>
+    </nz-form-control>
+    <br>
+    <nz-form-control>
+      <button nz-button class="login-form-button" (click)="userLogin()" [nzType]="'primary'">{{ login_text }}</button>
+    </nz-form-control>
+  </nz-form-item>
+</div>
+<router-outlet name="popup"></router-outlet>

@@ -1,0 +1,92 @@
+<div style="width: 60%; margin: 0 auto;" >
+  <h3>{{ new_title_txt }}单品盘点[{{ checkData.check_batch_cd }}]</h3>
+  <!--
+    <div class="form-group">
+      <label>Location input</label>
+      <input [(ngModel)]="newLocation" (keyup.enter)="finishLocation()"  type="text" class="form-control" #locationInput >
+    </div>
+
+    <div class="form-group">
+      <label>Barcode input</label>
+      <input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()"  type="text" class="form-control" #barcodeInput >
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <!--<nz-input-group nzAddOnBefore="{{ im_input_location_code_txt }}" nzPrefixIcon = "anticon anticon-barcode" nzCompact>-->
+      <input type="text" nz-input placeholder="{{ im_input_location_code_txt }}" [(ngModel)]="newLocation" (keyup.enter)="finishLocation()" #locationInput>
+      <!--</nz-input-group>-->
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_input_barcode_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" #barcodeInput>
+    </nz-input-group>
+  </div>
+<!--
+    <div class="form-group">
+      <label>{{ new_code_txt }}货位</label>
+      <input [(ngModel)]="newChecking.wareLocation" type="text" class="form-control" readonly required>
+    </div>
+-->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_location_txt }}" >
+      <input type="text" nz-input [(ngModel)]="newChecking.wareLocation" readonly required>
+    </nz-input-group>
+  </div>
+    <!--
+    <div class="form-group">
+      <label>{{ new_name_txt }}SKU</label>
+      <input [(ngModel)]="newChecking.sku" type="text" class="form-control" readonly required>
+    </div>
+    -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_sku_txt }}" >
+      <input type="text" nz-input [(ngModel)]="newChecking.sku" readonly required>
+    </nz-input-group>
+  </div>
+<!--
+    <div class="form-group">
+      <label>{{ new_type_txt }}数量</label>
+      <input [(ngModel)]="newChecking.num" type="text" class="form-control" [readonly]="needBarcode" required>
+    
+    </div>
+-->
+    <nz-table nzBordered [nzData]="checkingItems" [nzSize]="'small'"  *ngIf="checkingItems.length>0">
+      <thead>
+        <tr>
+          <th>{{ filter_No_txt }}</th>
+          <th>{{ im_location_txt }}</th>
+          <th>{{ im_sku_txt }}</th>
+          <th>{{ im_batch_txt }}</th>
+          <th>{{ im_num_txt }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of checkingItems ; index as i">
+          <td>{{ i+1 }}</td>
+          <td>{{ item.wareLocation }}</td>
+          <td>{{ item.sku }}</td>
+          <td>{{ item.batch_cd }}</td>
+          <td>{{ item.num }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+    <!--
+    -->
+  <nz-button-group>
+
+    <button nz-button (click)="cancel()">{{ cancel_txt }}</button>
+
+    <button nz-button (click)="pause()">{{ btn_pause_txt }}</button>
+
+    <button nz-button (click)="save()" nzType="primary">{{ save_txt }}</button>
+
+  </nz-button-group>
+  <!--
+    <p>
+    <a (click)="save()">{{ save_txt }}</a>
+    <a (click) = "pause()">{{ btn_pause_txt }} </a>
+    <a (click)="cancel()">{{ cancel_txt }}</a>
+    </p>
+  -->
+</div>

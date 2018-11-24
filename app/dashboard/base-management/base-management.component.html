@@ -1,0 +1,210 @@
+<div id="warehouse1" *ngIf="spaces">
+  <div class="title_name">
+    <div class="subtitle">
+      <span> {{warehouse_name}} </span> 
+      <!--<span><a [routerLink] = "['../', { outlets: { add_space: 'addspace'} }]">NEW SPACE</a></span>-->
+      <!--<span><a [routerLink] = "[ { outlets: { new_space: ['addspace', 1, currentId]} } ]">{{ space_title_txt }}</a></span>-->
+      <button nz-button nzType="primary" (click)="createComponentModal()">
+        <span>{{ space_title_txt }}</span>
+      </button>
+    </div>
+    <div class="goback">
+      <a routerLink = "/dashboard/checkingplace/2/{{ currentId }}"><div class="action1">盘点</div></a>
+      <!--
+      <a [routerLink]="[ {outlets: {new_space:['modifyspace', 1, currentId]} } ]"><div class="action1"> modify</div></a>
+      <a href="#" *ngIf="warehouse_status==='1'"><div class="action1">{{ stop_txt }}</div></a>
+      <a href="#" *ngIf="warehouse_status==='2'"><div class="action1">{{ start_txt }}</div></a>
+      -->
+      <button nz-button nzType="default" (click)="goBack()"><!--<i class="anticon anticon-left"></i>--> {{ go_back_txt }}</button>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+
+  <table class="warehouseimage" border="0">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr style="height: 100px;">
+      <td colspan="1">{{ bm_assembly_space_txt }}
+        <div *ngIf="assemblySpace" 
+          [class.assemblyspace]="assemblySpace"
+          (click)="spaceDetails(assemblySpace.id)"
+          >
+        
+        {{ assemblySpace.space_name }} [{{ assemblySpace.space_code }}]
+        </div>
+      </td>
+        
+      <td colspan="3"> {{ bm_stockup_space_txt }}
+        <div *ngIf="stockUpSpace"
+          [class.stockupspace]="stockUpSpace"
+          (click)="spaceDetails(stockUpSpace.id)"
+          >
+          
+          {{ stockUpSpace.space_name }} [{{ stockUpSpace.space_code }}]
+        </div>
+      </td>
+
+    </tr>
+    <tr style="height: 200px">
+      <td colspan="1" style="width:25%">{{ bm_packs_space_txt }}
+        <div *ngIf="packSpace" class="packspace" (click)="spaceDetails(packSpace.id)">
+          
+          {{ packSpace.space_name }} [{{ packSpace.space_code }}]
+        </div>
+      </td>
+      <td colspan="2" style="width:65%">{{ bm_delivery_space_txt }}
+        <div *ngIf="deliverySpace" class="deliveryspace" (click)="spaceDetails(deliverySpace.id)">
+          
+          {{ deliverySpace.space_name }} [{{ deliverySpace.space_code }}]
+        </div>
+      </td>
+
+      <td colspan="1">{{ bm_parts_space_txt }}
+        <div *ngIf="partSpace" class="partspace" (click)="spaceDetails(partSpace.id)">
+          
+          {{ partSpace.space_name }} [{{ partSpace.space_code }}]
+        </div>
+      </td>
+    </tr>
+    <tr style="height: 100px">
+      <td colspan="2">{{ bm_shipping_space_txt }}
+        <div *ngIf="shippingSpace" class="shippingspace" (click)="spaceDetails(shippingSpace.id)">
+          
+          {{ shippingSpace.space_name }} [{{ shippingSpace.space_code }}]
+        </div>
+      </td>
+      <td colspan="2">{{ bm_transfer_space_txt }}
+        <div *ngIf="allocationSpace" class="allocationspace" (click)="spaceDetails(allocationSpace.id)">
+          
+          {{ allocationSpace.space_name }} [{{ allocationSpace.space_code }}]
+        </div>
+      </td>
+
+    </tr>
+  </table>
+
+</div>
+<div class="position1" *ngIf="positions">
+  <div class="title_name">
+    <div class="subtitle">
+      <span> {{space_name}} </span> 
+      <!--<span><a [routerLink] = "['../', { outlets: { add_space: 'addspace'} }]">NEW SPACE</a></span>-->
+      <!--<span><a [routerLink] = "[ { outlets: { new_space: ['addspace', 2, currentId]} } ]">{{ position_title_txt }}</a></span>-->
+      <!--<div class="goback"><a (click) = "goBack()">{{ go_back_txt }}</a></div>-->
+      <button nz-button nzType="primary" (click)="createComponentModal()">
+        <span>{{ position_title_txt }}</span>
+      </button>
+    </div>
+    <div class="goback">
+      <a routerLink = "/checkingplace/3/{{ currentId }}"><div class="action1">盘点</div></a>
+      <!--
+      <a [routerLink]="[ {outlets: {new_space:['modifyspace', 2, currentId]} } ]"><div class="action1"> modify</div></a>
+      <a href="#" *ngIf="space_status==='1'"><div class="action1">{{ stop_txt }}</div></a>
+      <a href="#" *ngIf="space_status==='2'"><div class="action1">{{ start_txt }}</div></a>
+      <a (click) = "goBack()"><div class="action2">{{ go_back_txt }}</div></a>
+      -->
+      <button nz-button nzType="default" (click)="goBack()"><!--<i class="anticon anticon-left"></i>--> {{ go_back_txt }}</button>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+ 
+  <ul class="spaces">
+    <li *ngFor="let position of positions"
+      class="position-list"
+      >
+      <div class="position" (click)="positionDetails(position.id)" >
+        <div class="info">
+          {{ position.space_name }}
+          <p>[{{ position.space_code }}]</p>
+        </div>
+        <!--
+        <div class="actions">
+          <div><button (click)="positionDetails(position.spaceId)" >{{ detail_txt }}</button></div>
+          <div *ngIf="position.spaceStatus === '1'"><button>{{ stop_txt }}</button></div>
+          <div *ngIf="position.spaceStatus === '2'"><button>{{ start_txt }}</button></div>
+          
+        </div>
+        -->
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="position1" *ngIf="shelves">
+  <div class="title_name">
+    <div class="subtitle">
+      <span> {{position_name}} </span> 
+      <!--<span><a [routerLink] = "['../', { outlets: { add_space: 'addspace'} }]">NEW SPACE</a></span>-->
+      <!--<span><a [routerLink] = "[ { outlets: { new_space: ['addspace', 3, currentId]} } ]">{{ shelf_title_txt }}</a></span>-->
+      <!--<div class="goback"><a (click) = "goBack()">{{ go_back_txt }}</a></div>-->
+      <button nz-button nzType="primary" (click)="createComponentModal()">
+        <span>{{ shelf_title_txt }}</span>
+      </button>
+    </div>
+    <div class="goback">
+      <a routerLink = "/checkingplace/4/{{ currentId }}"><div class="action1">盘点</div></a>
+      <!--
+      <a [routerLink]="[ {outlets: {new_space:['modifyspace', 3, currentId]} } ]"><div class="action1"> modify</div></a>
+      <a href="#" *ngIf="position_status==='1'"><div class="action1">{{ stop_txt }}</div></a>
+      <a href="#" *ngIf="position_status==='2'"><div class="action1">{{ start_txt }}</div></a>
+      <a (click) = "goBack()"><div class="action2">{{ go_back_txt }}</div></a>
+      -->
+      <button nz-button nzType="default" (click)="goBack()"><!--<i class="anticon anticon-left"></i>--> {{ go_back_txt }}</button>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+ 
+  <ul class="spaces">
+    <li *ngFor="let shelf of shelves"
+        class="shelf-list"
+      >
+      <div class="position">
+        <div class="info">
+          {{ shelf.space_name }}
+        </div>
+        <div class="actions">
+          <div><!--<a [routerLink] = "[ { outlets: { new_space: ['shelfdetail', shelf.id] } } ]" >{{ detail_txt }}</a>-->
+            <button nz-button nzType="default" nzBlock (click)="createShelfComponentModal(shelf.id)">
+              <span>{{ detail_txt }}</span>
+            </button>
+          </div>
+          <!--
+          <div *ngIf="shelf.spaceStatus === '1'"><button>{{ stop_txt }}</button></div>
+          <div *ngIf="shelf.spaceStatus === '2'"><button>{{ start_txt }}</button></div>
+          -->
+          
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="subtitle">
+    <!--<p><span><a [routerLink] = "[ { outlets: { new_space: ['addlocation', currentId]} } ]">{{ location_title_txt }}</a></span></p>-->
+      <button nz-button nzType="primary" (click)="createLocationComponentModal()">
+        <span>{{ location_title_txt }}</span>
+      </button>
+  </div>
+  <div style="clear:both;" ></div>
+  <div *ngIf="wareLocations">
+    <ul class="spaces">
+      <li *ngFor="let wareLocation of wareLocations"
+          [class.noitems]="!wareLocation.items"
+          [class.items]="wareLocation.items"
+        >
+        <div class="position">
+          <div class="info">
+            {{ wareLocation.location_code }} 
+            
+            <p *ngFor="let item of wareLocation.items">
+            {{ item.item_name }} * {{ item.num }}
+            </p>
+            
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

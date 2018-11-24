@@ -1,0 +1,18 @@
+<div>
+  {{ code }}
+  <div *ngIf="type == 1 || type == 2">
+    <label>合计出入库数量</label>{{ inOutData.total }}
+    <label>出入库日期</label>{{ inOutData.date }}
+      <div *ngFor="let instock of inOutData.content">
+        <div>库位码：{{ instock.instock  }}</div>
+        <ul *ngFor="let item of instock.items" >
+          <li>SKU：{{ item.sku }} </li>
+          <li></li>
+          <li>批次：{{ item.batch_cd }}</li>
+          <li>数量：{{ item.num }}</li>
+        </ul>
+        <div style="clear: both"></div>
+      </div>
+    
+  </div>
+</div>

@@ -1,0 +1,29 @@
+  <div style="margin-left: 10px; margin-bottom: 16px; width: 50%; float:left;">
+    <nz-input-group nzAddOnBefore="{{ shipCompany }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="loadNumber" readonly>
+    </nz-input-group>
+  </div>
+  <div style="margin-right: 10px; float: right;">
+    <button nz-button nzType="primary" (click)="completeOut()">{{ btn_shipOutBound_txt }}</button>
+
+  </div>
+  <div style="clear: both;margin-bottom: 20px;"></div>
+
+  <nz-table #ajaxTable [nzShowPagination]="false" 
+    [nzFrontPagination]="false" [nzData]="packages"  [nzSize]="'small'" 
+    [nzTotal]="total" >
+    <thead>
+      <tr>
+        <th>{{ filter_No_txt }}#</th>
+        <th>{{ filter_package_txt }}</th>
+        <th>{{ filter_location_txt }}</th>
+        
+      </tr>
+    </thead>
+    <tr *ngFor="let package of packages; index as i">
+      <td>{{ package.pno }}</td>
+      <td>{{ package.name }}</td>
+      <td>{{ package.bin }}</td>
+      
+    </tr>
+  </nz-table>

@@ -1,0 +1,15 @@
+{{ shelf_name }}
+<table border="1">
+  <tr *ngFor="let row of shelfDetail">
+    <td *ngFor="let col of row.columns"
+      [class.items]="col.items">
+      {{ col.warelocation_info.location_code }}[{{ col.shelf_row }}][{{ col.shelf_column }}]
+
+      <p *ngFor="let item of col.items">
+        {{ item.item_name }} * {{ item.num }}
+      </p>
+
+    </td>
+
+  </tr>
+</table>

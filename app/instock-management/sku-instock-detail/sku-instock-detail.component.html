@@ -1,0 +1,58 @@
+
+  <div class="title_name">
+    <div class="subtitle">
+      <span> {{ new_title_txt }} </span> 
+    </div>
+    <div class="goback">
+      <a (click) = "goBack()"><div class="action2">{{ go_back_txt }}</div></a>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+<!--
+    <div>
+      <table border="1" >
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>货位</th>
+            <th>商品名称</th>
+            <th>在库编码</th>
+            <th>数量</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of items; index as i" >
+          <td>{{ i+1 }}</td>
+          <td>{{ item.locationcd }}</td>
+          <td>{{ item.item_name }}</td>
+          <td>{{ item.instock_barcode }}</td>
+          <td>{{ item.quantity }}</td>
+        </tr>
+      </table>   
+    </div>
+-->
+
+<div class="search-result-list">
+        <!-- <button nz-button (click)="new()" class="editable-add-btn">Add</button> -->
+      <nz-table #ajaxTable nzShowSizeChanger *ngIf="items.length>0"
+        [nzFrontPagination]="false" [nzData]="items" [nzLoading]="loading" [nzSize]="'small'" 
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" 
+        (nzPageIndexChange)="getBaseData(0)" (nzPageSizeChange)="getBaseData(1)">
+        <thead>
+          <tr>
+            <th>{{ filter_No_txt }}</th>
+            <th>{{ im_location_txt }}</th>
+            <th>{{ im_item_name_txt }}</th>
+            <th>{{ im_input_barcode_txt }}</th>
+            <th>{{ im_num_txt }}</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of items; index as i" >
+          <td>{{ i+1 }}</td>
+          <td>{{ item.locationcd }}</td>
+          <td>{{ item.item_name }}</td>
+          <td>{{ item.instock_barcode }}</td>
+          <td>{{ item.quantity }}</td>
+        </tr>       
+      </nz-table>
+
+</div>

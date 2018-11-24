@@ -1,0 +1,139 @@
+<div class="container" *ngIf="type===1">
+  <!-- <h3>{{ new_title_txt }}</h3> -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_code_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_code">
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_name_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_name">
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_type_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_type_txt }}" [(ngModel)]="space.spaces_type">
+      <nz-option *ngFor="let spacetype of types" nzLabel="{{ spacetype.value }}" nzValue="{{ spacetype.key }}"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_temperature_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_temperature_txt }}" [(ngModel)]="space.temperature_type">
+      <nz-option *ngFor="let temperatureType of temperatureTypes" nzLabel="{{ temperatureType.value }}" nzValue="{{ temperatureType.key }}"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_status_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_status_txt }}" [(ngModel)]="space.space_status">
+      <nz-option *ngFor="let status of statusArrays" [nzLabel]="status.value" [nzValue]="status.key"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+  <!--
+  <nz-button-group>
+    <button nz-button (click)="cancel()">{{ cancel_txt }}</button>
+    <button nz-button (click)="save()" nzType="primary">{{ save_txt }}</button>
+  </nz-button-group>
+  -->
+</div>
+
+<div class="container" *ngIf="type===2">
+  <!-- <h3>{{ new_title_txt }}</h3> -->
+  <!--<form> -->
+   <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_code_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_code">
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_name_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_name">
+    </nz-input-group>
+  </div>   
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_status_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_status_txt }}" [(ngModel)]="space.space_status">
+      <nz-option *ngFor="let status of statusArrays" [nzLabel]="status.value" [nzValue]="status.key"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+    <!--</form>-->
+</div>
+
+<div class="container" *ngIf="type===3">
+  <!--<h3>{{ new_title_txt }}</h3>-->
+  <!--<form> -->
+
+   <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_code_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_code">
+    </nz-input-group>
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_name_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.space_name">
+    </nz-input-group>
+  </div>   
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_status_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_status_txt }}" [(ngModel)]="space.space_status">
+      <nz-option *ngFor="let status of statusArrays" [nzLabel]="status.value" [nzValue]="status.key"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+
+   <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_row_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.shelf_row">
+    </nz-input-group>
+  </div>
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_column_txt }}" >
+      <input type="text" nz-input [(ngModel)]="space.shelf_column">
+    </nz-input-group>
+  </div>  
+  
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ set_default_location_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ set_default_location_txt }}" [(ngModel)]="defaultLocationType">
+      <nz-option *ngFor="let status of createShelfLocationType" [nzLabel]="status.value" [nzValue]="status.key"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+    <!--</form>-->
+</div>
+
+<!--
+<div class="container" *ngIf="type===4">
+  <h3>{{ new_title_txt }}新增库区中库位</h3>
+    <div class="form-group">
+      <label>{{ new_code_txt }}</label>
+      <input [(ngModel)]="space.spaceCode" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>{{ new_name_txt }}</label>
+      <input [(ngModel)]="space.spaceName" type="text" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+      <label>{{ new_status_txt }}</label>
+      <select [(ngModel)]="space.spaceStatus" class="form-control" required>
+        <option *ngFor="let status of statusArrays" [value]="status.key">{{status.value}}</option>
+      </select>
+    </div>
+
+    <p>
+    <a (click)="save()">{{ save_txt }}</a>
+    <a (click)="cancel()">{{ cancel_txt }}</a>
+    </p>
+
+</div>
+-->

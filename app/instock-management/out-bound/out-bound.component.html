@@ -1,0 +1,70 @@
+<div style="width: 60%; margin: 0 auto;" >
+  <h3>{{ new_title_txt }}</h3>
+  <div style="margin-bottom: 16px;">
+    <!--<nz-input-group nzAddOnBefore="{{ im_input_location_code_txt }}" nzPrefixIcon = "anticon anticon-barcode" nzCompact>-->
+      <input type="text" nz-input placeholder="{{ im_input_location_code_txt }}" [(ngModel)]="outBoundItem.wareLocation" (keyup.enter)="finishLocation()" [readonly]="locationEditFlg" required #wlCode>
+      <!--</nz-input-group>-->
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_type_txt }}货位</label>
+      <input [(ngModel)]="outBoundItem.wareLocation" (keyup.enter)="finishLocation()" class="form-control" [readonly]="locationEditFlg" required #wlCode>
+    
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_input_barcode_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" #barcodeInput>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>Barcode input</label>
+      <input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()"  type="text" class="form-control" #barcodeInput >
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_sku_txt }}" >
+      <input type="text" nz-input [(ngModel)]="outBoundItem.sku" [readonly]="needBarcode" required>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_code_txt }}SKU</label>
+      <input [(ngModel)]="outBoundItem.sku" type="text" class="form-control" [readonly]="needBarcode" required>
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_num_txt }}" >
+      <input type="text" nz-input [(ngModel)]="outBoundItem.num" [readonly]="needBarcode" required>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_name_txt }}数量</label>
+      <input [(ngModel)]="outBoundItem.num" type="text" class="form-control" [readonly]="needBarcode" required>
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_memo_txt }}" >
+      <input type="text" nz-input [(ngModel)]="outBoundItem.memo">
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} 备注</label>
+      <input [(ngModel)]="outBoundItem.memo" class="form-control" required>
+    </div>
+  -->
+  <nz-button-group>
+    <button nz-button (click)="cancel()">{{ cancel_txt }}</button>
+    <button nz-button (click)="save()" nzType="primary">{{ save_txt }}</button>
+  </nz-button-group>
+  <!--
+    <p>
+    <a (click)="save()">{{ save_txt }}save</a>
+    <a (click)="cancel()">{{ cancel_txt }}cancel</a>
+    </p>
+  -->
+    <!--</form>-->
+</div>

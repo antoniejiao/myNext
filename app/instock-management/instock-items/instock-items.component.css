@@ -1,0 +1,61 @@
+
+.title_name {
+  #height: 50px;
+  #line-height: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.subtitle {
+  float: left;
+  #margin-left: 25px;
+    -webkit-padding-start: 40px;
+}
+
+.goback {
+  float: right;
+  margin-right:20px;
+  cursor: pointer;
+  color: #000079;
+  #-webkit-padding-start: 40px;
+}
+
+.goback a {
+  text-decoration: none;
+  color: #000079;
+}
+
+.goback a:hover {
+  color: #0000b9;
+}
+
+.worklist {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+}
+
+table td, table th {
+  border: 1px solid #cad9ea;
+  color: #666;
+  height: 30px;
+}
+
+table thead th {
+  background-color: #cce8eb;
+  width: 100px;
+  text-align: center;
+}
+
+table tr: nth-child(odd) {
+  background: #fff;
+}
+
+table tr: nth-child(even) {
+  background: #f5fafa;
+}

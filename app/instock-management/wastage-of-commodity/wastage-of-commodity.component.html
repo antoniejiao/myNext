@@ -1,0 +1,84 @@
+
+<div style="width: 60%; margin: 0 auto;">
+  <h3>{{ new_title_txt }}</h3>
+  <!--
+    <div class="form-group">
+      <label>Barcode input</label>
+      <input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()"  type="text" class="form-control" #barcodeInput >
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_input_barcode_txt }}" nzPrefixIcon = "anticon anticon-barcode">
+      <input type="text" nz-input [(ngModel)]="newBarcode" (keyup.enter)="finishBarcode()" #barcodeInput>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_sku_txt }}SKU</label>
+      <input [(ngModel)]="wastageItem.sku" type="text" class="form-control" readonly required>
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_sku_txt }}" >
+      <input type="text" nz-input [(ngModel)]="wastageItem.sku" readonly required>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_name_txt }}数量</label>
+      <input [(ngModel)]="wastageItem.num" type="text" class="form-control" readonly required>
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_num_txt }}" >
+      <input type="text" nz-input [(ngModel)]="wastageItem.num" readonly required>
+    </nz-input-group>
+  </div>
+<!--
+    <div class="form-group">
+      <label>{{ new_temperature_txt }}损耗原因</label>
+      <select [(ngModel)]="wastageItem.wastage_type" class="form-control" required>
+        <option *ngFor="let wastageType of wastageTypes" [value]="wastageType.key">{{wastageType.value}}</option>
+      </select>
+    </div>
+-->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ filter_reason_type_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="" [(ngModel)]="wastageItem.wastage_type">
+      <nz-option *ngFor="let type of wastageTypes" nzLabel="{{ type.key }}" nzValue="{{ type.value }}"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} 原因描述</label>
+      <input [(ngModel)]="wastageItem.reason" class="form-control">
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ filter_reason_txt }}" >
+      <input type="text" nz-input [(ngModel)]="wastageItem.reason">
+    </nz-input-group>
+  </div>
+  <!--
+    <div class="form-group">
+      <label>{{ new_temperature_txt }} 备注</label>
+      <input [(ngModel)]="wastageItem.memo" class="form-control">
+    </div>
+  -->
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ im_memo_txt }}" >
+      <input type="text" nz-input [(ngModel)]="wastageItem.memo">
+    </nz-input-group>
+  </div>
+  <!--
+    <p>
+    <a (click)="save()">{{ save_txt }}</a>
+    <a (click)="cancel()">{{ cancel_txt }}</a>
+    </p>
+  -->
+  <nz-button-group>
+    <button nz-button (click)="cancel()">{{ cancel_txt }}</button>
+    <button nz-button (click)="save()" nzType="primary">{{ save_txt }}</button>
+  </nz-button-group>
+</div>

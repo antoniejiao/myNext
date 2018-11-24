@@ -1,0 +1,51 @@
+.base-zone, .checking-zone {
+  width: 50%;
+  height: 580px;
+  margin-top: 10px;
+  background-color: #fffffe;
+  box-shadow: 1px 5px 1px #888888;
+}
+
+.isleft {
+  float: left;
+  #margin-left: 2%;
+}
+
+.isright {
+  float: right;
+  #margin-right: 2%;
+}
+
+.sub-zone {
+  width: 96%;
+  height: 280px;
+  margin: 0 auto 10px auto;
+
+  box-shadow: 1px 2px 1px #888888;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+}
+
+table td, table th {
+  border: 1px solid #cad9ea;
+  color: #666;
+  height: 30px;
+}
+
+table thead th {
+  background-color: #cce8eb;
+  width: 100px;
+  text-align: center;
+}
+
+table tr: nth-child(odd) {
+  background: #fff;
+}
+
+table tr: nth-child(even) {
+  background: #f5fafa;
+}

@@ -1,0 +1,218 @@
+#warehouse1, .position1 {
+  #width: 80%;
+  height: 580px;
+  background-color: #FFFFFE;
+  margin-top: 10px;
+  text-align: center;
+  #line-height: 400px;
+  box-shadow: 5px 3px 5px 3px #888888;
+}
+
+.title_name {
+  #height: 50px;
+  #line-height: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.spacetype1 {
+  background-color: #FFCC66;
+}
+
+.spacetype5 {
+  background-color: #66CC99;
+}
+
+.spaceStatus {
+  background-color: #FF6633;
+}
+
+ul {
+  margin: 0;
+  height: 300px;
+}
+
+ul li {
+  float: left;
+  list-style: none;
+  width: 100px;
+  height: 298px;
+ # margin-left: 10px;
+  border: 1px solid #ffffff;
+  box-shadow: 1px 2px 1px #888888;
+}
+
+.space {
+#  display: flex;
+#  flex-direction: column;
+#  justify-content: flex-end;
+#  align-items: flex-end;
+  width: 100px;
+  height: 298px;
+}
+
+.space .info {
+  height: 150px;
+  margin-top: 10px;
+}
+
+
+.space .actions {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  height: 130px;
+}
+
+.actions div {
+  width: 100px;
+}
+
+.actions button {
+  width: 80%;
+  padding: 3px 0;
+}
+
+.actions p {
+  margin: 0;
+}
+
+.position1 ul li {
+  float: left;
+  list-style: none;
+  width: 100px;
+  height: 100px;
+ # margin-left: 10px;
+  border: 1px solid #ffffff;
+  box-shadow: 1px 2px 1px #888888;
+}
+
+.position-list {
+  background-color: #ccffff;
+}
+
+.shelf-list {
+  background-color: #99cc00;
+}
+
+.position {
+  width: 100px;
+  height: 100px;
+  #background-color: #ccffff;
+}
+
+.position .info {
+  height: 20px;
+  margin-top: 10px;
+}
+.position .actions {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  height: 68px;
+}
+
+.noitems {
+  background-color: #99ffcc;
+}
+
+.items {
+  background-color: #ffffcc;
+}
+
+.subtitle {
+  float: left;
+  #margin-left: 25px;
+    -webkit-padding-start: 40px;
+}
+
+.goback {
+  float: right;
+  margin-right:20px;
+  cursor: pointer;
+  color: #000079;
+  #-webkit-padding-start: 40px;
+}
+
+.goback a {
+  text-decoration: none;
+  color: #000079;
+}
+
+.goback a:hover {
+  color: #0000b9;
+}
+
+.warehouseimage {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.warehouseimage td {
+  position: relative;
+  background-color: #cccccc;
+}
+
+.warehouseimage td div {
+  position: absolute; 
+  top:0; 
+  left:0; 
+  width: 100%; 
+  height: 100%;
+  cursor: pointer;
+}
+
+.nullspace {
+  background-color: #cccccc;
+}
+
+.allocationspace {
+  background-color: #66ccff;
+}
+
+.shippingspace {
+  background-color: #99ccff;
+}
+
+.packspace {
+  background-color: #99ff66;
+}
+
+.deliveryspace {
+  background-color: #ccff33;
+}
+
+.partspace {
+  background-color: #ffcc66;
+}
+
+.stockupspace {
+  background-color: #ffcc00;
+}
+
+.assemblyspace {
+  background-color: #99ff33;
+}
+
+.goback a div {
+  float: left;
+  padding: 0px 3px;
+}
+
+.goback .action1 {
+  width: 60px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0000b9;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.goback .action2 {
+  margin-left: 20px;
+}

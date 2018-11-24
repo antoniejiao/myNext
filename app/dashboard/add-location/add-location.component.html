@@ -1,0 +1,15 @@
+<div class="container" *ngIf="fatherId > 0">
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_code_txt }}" >
+      <input type="text" nz-input [(ngModel)]="wareLocation.location_code">
+    </nz-input-group>
+  </div>
+  <div style="margin-bottom: 16px;">
+    <nz-input-group nzAddOnBefore="{{ new_status_txt }}" >
+    <nz-select style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="{{ new_status_txt }}" [(ngModel)]="wareLocation.status">
+      <nz-option *ngFor="let status of statusArrays" [nzLabel]="status.value" [nzValue]="status.key"></nz-option>
+    </nz-select>
+    </nz-input-group>
+  </div>
+
+</div>

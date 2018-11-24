@@ -1,0 +1,75 @@
+<div>
+  
+    <div class="subtitle">
+      <span> {{ inOutbound_txt }}  </span> 
+      <button nz-button nzType="default" (click)="new()">
+        <span>{{ new_txt }}</span>
+      </button>
+    </div>
+    <div style="clear:both"></div>
+</div>
+  
+  
+        <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+          <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="8" >
+              <nz-form-item nzFlex>
+                <nz-form-label [nzFor]="'outin_batch_cd'">{{ filter_ordercd_txt }}  </nz-form-label>
+                <nz-form-control>
+                  <input nz-input placeholder="" [formControlName] = "'outin_batch_cd'" [attr.id]="'outin_batch_cd'" >
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="8" >
+              <nz-form-item nzFlex>
+                <nz-form-label [nzFor]="'oper_name'">{{ filter_operator_txt }} </nz-form-label>
+                <nz-form-control>
+                  <input nz-input placeholder="" [formControlName]="'oper_name'" [attr.id]="'oper_name'">
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col [nzSpan]="8" >
+              <nz-form-item nzFlex>
+                <nz-form-label [nzFor]="'created_dt'">{{ filter_operdate_txt }} </nz-form-label>
+                <nz-form-control>
+                  <input nz-input placeholder="" [formControlName]="'created_dt'" [attr.id]="'created_dt'">
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+      <div nz-row>
+        <div nz-col [nzSpan]="24" style="text-align: right;">
+          <button nz-button [nzType]="'primary'">{{ filter_search_txt }}</button>
+          <button nz-button (click)="resetForm()">{{ filter_clear_txt }}</button>
+        </div>
+      </div>
+        </form>
+
+    <div class="search-result-list">
+        <!-- <button nz-button (click)="new()" class="editable-add-btn">Add</button> -->
+      <nz-table #ajaxTable nzShowSizeChanger *ngIf="orders.length>0"
+        [nzFrontPagination]="false" [nzData]="orders" [nzLoading]="loading" [nzSize]="'small'" 
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" 
+        (nzPageIndexChange)="getBaseData(0)" (nzPageSizeChange)="getBaseData(1)">
+        <thead>
+          <tr>
+            <th>{{ filter_No_txt }}</th>
+            <th>{{ filter_ordercd_txt }}</th>
+            <th>{{ filter_operdate_txt }}</th>
+            <th>{{ filter_operator_txt }}</th>
+            <th>{{ filter_actions_txt }}</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let order of orders; index as i" >
+          <td>{{ i+1 }}</td>
+          <td>{{ order.outin_batch_cd }}</td>
+          <td>{{ order.created_dt }}</td>
+          <td>{{ order.oper_name }}</td>
+          <td><a routerLink = "/dashboard/instockreport/{{ orderType }}/{{ order.outin_batch_cd }}">{{ btn_report_txt }}</a></td>
+        </tr>       
+      </nz-table>
+
+</div>
+
+

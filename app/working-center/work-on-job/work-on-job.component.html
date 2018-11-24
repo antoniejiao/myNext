@@ -1,0 +1,61 @@
+<div style="padding: 10px; text-align: left;">
+  <!--
+  <div style="width:20%; float:right">
+    <nz-timeline>
+      <nz-timeline-item nzColor="green">
+        <p style="font-size:10px; line-height: 10px">申请</p>
+        <p style="font-size:10px; line-height: 10px">2018-10-28 10:00:00</p>
+      </nz-timeline-item>
+      <nz-timeline-item nzColor="green">
+        <p style="font-size:10px; line-height: 10px">出库</p>
+        <p style="font-size:10px; line-height: 10px">2018-10-28 10:15:00</p>
+      </nz-timeline-item>
+      <nz-timeline-item nzColor="red" [nzDot]="dotTemplate1">
+        <p style="font-size:10px; line-height: 10px">打包</p>
+
+      </nz-timeline-item>
+      <nz-timeline-item nzColor="grey">
+        <p style="font-size:10px; line-height: 10px">物流调配</p>
+      </nz-timeline-item>
+      <nz-timeline-item nzColor="grey">
+        <p style="font-size:10px; line-height: 10px">发车</p>
+      </nz-timeline-item>
+    </nz-timeline>
+    <ng-template #dotTemplate1>
+      <i class="anticon anticon-clock-circle" theme="outline"></i>
+    </ng-template>
+  </div>
+  -->
+    <div style="background: #f5faff; padding:15px;">
+      <nz-card style="width:100%;" [nzBordered]="false" nzTitle="1234567890987654321" [nzExtra]="extraTemplate">
+        <p>自提</p>
+        <p>非组装</p>
+      </nz-card>
+      <ng-template #extraTemplate>
+        <a>Jackson W Bush</a>
+      </ng-template>
+    </div>
+  <div style="width: 100%; clear: both;"></div>
+</div>
+<div style="width: 100%; text-align:left; padding: 15px;">
+  <nz-steps [nzCurrent]="current" >
+    <nz-step *ngFor="let step of steps" [nzTitle]="step.stepname" ></nz-step>
+    <ng-template #startTitle>
+      <a routerLink="startwork">{{ startTitle_txt }}</a>
+    </ng-template>
+    <ng-template #outboundTitle>
+      <a routerLink="orderoutbound">{{ outboundTitle_txt }}</a>
+    </ng-template>
+    <ng-template #packageTitle>
+      <a routerLink="orderpackage">{{ packageTitle_txt }}</a> 
+    </ng-template>
+    <ng-template #agentLogisticTitle>
+      <a routerLink="agentlogistics">{{ agentLogisticTitle_txt }}</a>
+    </ng-template>
+    <ng-template #shippingTitle>
+      <a routerLink="shipping">{{ shipping_txt }}</a>
+    </ng-template>
+  </nz-steps>
+</div>
+<nz-divider></nz-divider>
+<router-outlet ></router-outlet>

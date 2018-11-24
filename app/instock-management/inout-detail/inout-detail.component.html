@@ -1,0 +1,57 @@
+<div>
+  
+  <div class="title_name">
+    <div class="subtitle">
+      <span> {{warehouse_name}}  主仓 </span> 
+    </div>
+    <div class="goback">
+      <a (click) = "goBack()"><div class="action2">{{ go_back_txt }}</div></a>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+  
+  <div class="worklist">
+    <!--
+    <div>
+        <label>{{ new_sku_txt }}商品名称</label>
+        <input [(ngModel)]="selectItem.item_name" type="text" class="" >
+        <label>{{ new_name_txt }}SKU</label>
+        <input [(ngModel)]="selectItem.sku" type="text" class="">
+        <label>{{ new_sku_txt }}Barcode</label>
+        <input [(ngModel)]="selectItem.barcode" type="text" class="" >
+    </div>
+    -->
+    <div>
+      <table border="1" >
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>sku</th>
+            <th>商品名称</th>
+            <th>在库数</th>
+            <th>在库Barcode</th>
+            <th>入库位置</th>
+            <th>操作人</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let detail of details; index as i" >
+          <td>{{ i+1 }}</td>
+          <td>{{ detail.sku }}</td>
+          <td></td>
+          <td>{{ detail.quantity }}</td>
+          <td>{{ detail.instock_barcode }}</td>
+          <td>{{ detail.warelocation_id }}</td>
+          <td>{{ detail.oper_name }}</td>
+        </tr>
+      </table>   
+    </div>
+    <!--
+    <div>
+      <span>共{{ pageCount }}页，第{{ curPage }}页</span>
+      <span *ngIf="curPage < pageCount"><button (click)="next()" >Next</button></span>
+      <span *ngIf="curPage > 1"><button (click)="last()" >Previous</button></span>
+    </div>
+    -->
+  </div>
+
+</div>
